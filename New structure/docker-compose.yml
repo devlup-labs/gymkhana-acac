@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    backend:
+        build:
+              context: Backend
+              dockerfile: Dockerfile 
+        command: python manage.py migrate
+        command: python manage.py runserver
+        ports:
+             - 8000:8000
+
+    frontend:
+          build:
+                context: frontend
+                dockerfile: Dockerfile  
+          command: npm run serve
+          ports:
+               - 8080:8080
+        
+          
+        
+              
+        
+
+         
