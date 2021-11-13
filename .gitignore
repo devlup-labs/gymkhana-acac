@@ -1,0 +1,151 @@
+# ---frontend---
+acac_frontend/.DS_Store
+acac_frontend/node_modules
+acac_frontend/dist/
+
+acac_frontend//tests/e2e/videos/
+acac_frontend//tests/e2e/screenshots/
+
+# local env files
+acac_frontend/.env.local
+acac_frontend/.env.*.local
+
+# Log files
+acac_frontend/npm-debug.log*
+acac_frontend/yarn-debug.log*
+acac_frontend/yarn-error.log*
+
+# Editor directories and files
+acac_frontend/.idea
+acac_frontend/.vscode
+acac_frontend/*.suo
+acac_frontend/*.ntvs*
+acac_frontend/*.njsproj
+acac_frontend/*.sln
+acac_frontend/*.sw?
+
+# ---backend---
+# Byte-compiled / optimized / DLL files
+acac_portal__pycache__/
+acac_portal*.py[cod]
+acac_portal*$py.class
+
+# C extensions
+acac_portal*.so
+
+# Distribution / packaging
+acac_portal.Python
+acac_portalenv/
+acac_portalbuild/
+acac_portaldevelop-eggs/
+acac_portaldist/
+acac_portaldownloads/
+acac_portaleggs/
+acac_portal.eggs/
+acac_portallib/
+acac_portallib64/
+acac_portalparts/
+acac_portalsdist/
+acac_portalvar/
+acac_portalwheels/
+acac_portal*.egg-info/
+acac_portal.installed.cfg
+acac_portal*.egg
+acac_portal*.sqlite3
+acac_portal.idea/
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+acac_portal*.manifest
+acac_portal*.spec
+
+# Installer logs
+acac_portalpip-log.txt
+acac_portalpip-delete-this-directory.txt
+
+# Unit test / coverage reports
+acac_portalhtmlcov/
+acac_portal.tox/
+acac_portal.coverage
+acac_portal.coverage.*
+acac_portal.cache
+acac_portalnosetests.xml
+acac_portalcoverage.xml
+acac_portal*.cover
+acac_portal.hypothesis/
+
+# Translations
+acac_portal*.mo
+acac_portal*.pot
+
+# Django stuff:
+acac_portal*.log
+acac_portallocal_settings.py
+
+# Flask stuff:
+acac_portalinstance/
+acac_portal.webassets-cache
+
+# Scrapy stuff:
+acac_portal.scrapy
+
+# Sphinx documentation
+acac_portaldocs/_build/
+
+# PyBuilder
+acac_portaltarget/
+
+# Jupyter Notebook
+acac_portal.ipynb_checkpoints
+
+# pyenv
+acac_portal.python-version
+
+# celery beat schedule file
+acac_portalcelerybeat-schedule
+
+# SageMath parsed files
+acac_portal*.sage.py
+
+# dotenv
+acac_portal.env
+
+# virtualenv
+acac_portal.venv
+acac_portalvenv/
+acac_portalENV/
+
+# Spyder project settings
+acac_portal.spyderproject
+acac_portal.spyproject
+
+# Rope project settings
+acac_portal.ropeproject
+
+# mkdocs documentation
+acac_portal/site
+
+# mypy
+acac_portal.mypy_cache/
+acac_portal.DS_Store
+
+# Django migrations
+acac_portalmigrations/
+
+# Project asset folders
+acac_portalstaticfiles/
+acac_portalstatic/
+acac_portalmedia/
+
+# Database
+acac_portalgymkhanadb
+acac_portaldb.sqlite3
+
+# Editor directories and files
+acac_portal.idea
+acac_portal*.suo
+acac_portal*.ntvs*
+acac_portal*.njsproj
+acac_portal*.sln
+
