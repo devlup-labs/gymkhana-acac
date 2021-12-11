@@ -3,8 +3,8 @@ acac_frontend/.DS_Store
 acac_frontend/node_modules
 acac_frontend/dist/
 
-acac_frontend//tests/e2e/videos/
-acac_frontend//tests/e2e/screenshots/
+acac_frontend/tests/e2e/videos/
+acac_frontend/tests/e2e/screenshots/
 
 # local env files
 acac_frontend/.env.local
@@ -26,126 +26,127 @@ acac_frontend/*.sw?
 
 # ---backend---
 # Byte-compiled / optimized / DLL files
-acac_portal__pycache__/
-acac_portal*.py[cod]
-acac_portal*$py.class
+acac_backend/__pycache__/
+acac_backend/*.py[cod]
+acac_backend/*$py.class
 
 # C extensions
-acac_portal*.so
+acac_backend/*.so
 
 # Distribution / packaging
-acac_portal.Python
-acac_portalenv/
-acac_portalbuild/
-acac_portaldevelop-eggs/
-acac_portaldist/
-acac_portaldownloads/
-acac_portaleggs/
-acac_portal.eggs/
-acac_portallib/
-acac_portallib64/
-acac_portalparts/
-acac_portalsdist/
-acac_portalvar/
-acac_portalwheels/
-acac_portal*.egg-info/
-acac_portal.installed.cfg
-acac_portal*.egg
-acac_portal*.sqlite3
-acac_portal.idea/
+acac_backend/.Python
+acac_backend/env/
+acac_backend/build/
+acac_backend/develop-eggs/
+acac_backend/dist/
+acac_backend/downloads/
+acac_backend/eggs/
+acac_backend/.eggs/
+acac_backend/lib/
+acac_backend/lib64/
+acac_backend/parts/
+acac_backend/sdist/
+acac_backend/var/
+acac_backend/wheels/
+acac_backend/*.egg-info/
+acac_backend/.installed.cfg
+acac_backend/*.egg
+acac_backend/*.sqlite3
+acac_backend/.idea/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
-acac_portal*.manifest
-acac_portal*.spec
+acac_backend/*.manifest
+acac_backend/*.spec
 
 # Installer logs
-acac_portalpip-log.txt
-acac_portalpip-delete-this-directory.txt
+acac_backend/pip-log.txt
+acac_backend/pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-acac_portalhtmlcov/
-acac_portal.tox/
-acac_portal.coverage
-acac_portal.coverage.*
-acac_portal.cache
-acac_portalnosetests.xml
-acac_portalcoverage.xml
-acac_portal*.cover
-acac_portal.hypothesis/
+acac_backend/htmlcov/
+acac_backend/.tox/
+acac_backend/.coverage
+acac_backend/.coverage.*
+acac_backend/.cache
+acac_backend/nosetests.xml
+acac_backend/coverage.xml
+acac_backend/*.cover
+acac_backend/.hypothesis/
 
 # Translations
-acac_portal*.mo
-acac_portal*.pot
+acac_backend/*.mo
+acac_backend/*.pot
 
 # Django stuff:
-acac_portal*.log
-acac_portallocal_settings.py
+acac_backend/*.log
+acac_backend/local_settings.py
 
 # Flask stuff:
-acac_portalinstance/
-acac_portal.webassets-cache
+acac_backend/instance/
+acac_backend/.webassets-cache
 
 # Scrapy stuff:
-acac_portal.scrapy
+acac_backend/.scrapy
 
 # Sphinx documentation
-acac_portaldocs/_build/
+acac_backend/docs/_build/
 
 # PyBuilder
-acac_portaltarget/
+acac_backend/target/
 
 # Jupyter Notebook
-acac_portal.ipynb_checkpoints
+acac_backend/.ipynb_checkpoints
 
 # pyenv
-acac_portal.python-version
+acac_backend/.python-version
 
 # celery beat schedule file
-acac_portalcelerybeat-schedule
+acac_backend/celerybeat-schedule
 
 # SageMath parsed files
-acac_portal*.sage.py
+acac_backend/*.sage.py
 
 # dotenv
-acac_portal.env
+acac_backend/.env
 
 # virtualenv
-acac_portal.venv
-acac_portalvenv/
-acac_portalENV/
+acac_backend/.venv
+acac_backend/venv/
+acac_backend/ENV/
 
 # Spyder project settings
-acac_portal.spyderproject
-acac_portal.spyproject
+acac_backend/.spyderproject
+acac_backend/.spyproject
 
 # Rope project settings
-acac_portal.ropeproject
+acac_backend/.ropeproject
 
 # mkdocs documentation
-acac_portal/site
+acac_backend//site
 
 # mypy
-acac_portal.mypy_cache/
-acac_portal.DS_Store
+acac_backend/.mypy_cache/
+acac_backend/.DS_Store
 
 # Django migrations
-acac_portalmigrations/
+acac_backend/migrations/
 
 # Project asset folders
-acac_portalstaticfiles/
-acac_portalstatic/
-acac_portalmedia/
+acac_backend/staticfiles/
+acac_backend/static/
+acac_backend/media/
+media
 
 # Database
-acac_portalgymkhanadb
-acac_portaldb.sqlite3
+acac_backend/gymkhanadb
+acac_backend/db.sqlite3
 
 # Editor directories and files
-acac_portal.idea
-acac_portal*.suo
-acac_portal*.ntvs*
-acac_portal*.njsproj
-acac_portal*.sln
+acac_backend/.idea
+acac_backend/*.suo
+acac_backend/*.ntvs*
+acac_backend/*.njsproj
+acac_backend/*.sln
 
