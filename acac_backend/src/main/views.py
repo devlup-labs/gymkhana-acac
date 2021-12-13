@@ -41,12 +41,12 @@ class BoardView(MaintenanceAndNavigationMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(BoardView, self).get_context_data(**kwargs)
         raw = self.object.society_set.filter(published=True)
-        socities = raw.filter(stype='S')
+        societies = raw.filter(stype='S')
         teams = raw.filter(stype='T')
         events = Event.objects.filter(society__board=self.object).filter(published=True).filter(
             date__gte=timezone.now())[:5]
         news = News.objects.filter(society__board=self.object)[:5]
-        context['society_list'] = socities
+        context['society_list'] = societies
         context['team_list'] = teams
         context['event_list'] = events
         context['news_list'] = news
@@ -71,12 +71,10 @@ class SocietyView(MaintenanceAndNavigationMixin, DetailView):
         events = Event.objects.filter(society=self.object).filter(published=True).filter(date__gte=timezone.now())[:5]
         activities = Activity.objects.filter(society=self.object)
         news = News.objects.filter(society=self.object)[:5]
-        coordinators = self.object.student_coordinators.all()
         members = self.object.core_members.all()
         context['event_list'] = events
         context['activity_list'] = activities
         context['news_list'] = news
-        context['student_coordinators'] = coordinators
         context['member_list'] = members
         return context
 
@@ -108,7 +106,7 @@ class OfficeView(MaintenanceAndNavigationMixin, TemplateView):
             'general_secretary': UserProfile.objects.filter(
                 roll=secretary_roll_no).first() if UserProfile.objects.filter(
                 roll=secretary_roll_no).exists() else None,
-            'boards': Board.objects.filter(year=current_year),
+            'societies': Society.objects.filter(year=current_year),
             'senate_secretary': Senate.objects.filter(year=current_year).first().senatemembership_set.filter(
                 role='SECY').first().userprofile if Senate.objects.filter(
                 year=current_year).exists() else None

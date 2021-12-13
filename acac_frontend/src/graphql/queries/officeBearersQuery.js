@@ -7,9 +7,6 @@ export const GET_OFFICE_BEARERS_QUERY = gql`
       edges {
         node {
           name
-          secretary {
-            ...OfficeBearerFields
-          }
           vicePresident {
             ...OfficeBearerFields
           }

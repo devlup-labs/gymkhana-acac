@@ -1,28 +1,17 @@
 import gql from "graphql-tag";
+import { SIZES_FRAGMENT } from "./sizesFragment";
 
 export const FACULTY_ADVISOR_FRAGMENT = gql`
-  fragment OfficeBearerFields on UserProfileNode {
-    phone
+  fragment FacultyAdvisorFields on FacultyProfileNode {
     cover {
       ...Sizes
     }
     avatar {
       ...Sizes
     }
-    about
-    user {
-      firstName
-      lastName
-      email
-    }
-    socialLinks {
-      edges {
-        node {
-          ...SocialMedia
-        }
-      }
-    }
+    name
+    email
+    phone
   }
   ${SIZES_FRAGMENT}
-  ${SOCIAL_MEDIA_ICON_FRAGMENT}
 `;

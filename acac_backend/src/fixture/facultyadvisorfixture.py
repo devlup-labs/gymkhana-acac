@@ -11,4 +11,7 @@ class FacultyAdvisorFactory(factory.django.DjangoModelFactory):
         model = 'main.FacultyAdvisor'
 
     name = factory.Faker('sentence', nb_words=2)
+    email = factory.Faker('email')
+    phone = random.randint(6000000000, 9999999999)
     avatar = factory.django.ImageField(color=random.choice(COLOUR))
+    cover = factory.django.ImageField(color=random.choice(COLOUR))

@@ -26,8 +26,14 @@ SKIN_CHOICES = (
 
 
 class FacultyAdvisor(models.Model):
+    #validators
+    contact = RegexValidator(r'^[0-9]{10}$', message='Not a valid number!')
+    # Database Model
     name = models.CharField(max_length=128)
-    avatar = VersatileImageField(upload_to='avatar')
+    email = models.EmailField(default=None)
+    cover = VersatileImageField(upload_to='cover', blank=True, null=True)
+    avatar = VersatileImageField(upload_to='avatar',blank=True, null=True)
+    phone = models.CharField(max_length=10, validators=[contact])
 
     def __str__(self):
         return self.name
@@ -42,14 +48,10 @@ class Board(models.Model):
     cover = VersatileImageField('Cover', upload_to='board_%Y', help_text="Upload high quality picture")
     skin = models.CharField(max_length=32, choices=SKIN_CHOICES, blank=True, default='mdb-skin',
                             help_text="Choose a skin while displaying board page.")
-    secretary = models.ForeignKey(UserProfile, related_name='secy',
-                                  null=True, blank=True, on_delete=models.SET_NULL)
     vice_president = models.ForeignKey(UserProfile, related_name='vice_president',
                                         limit_choices_to={'user__is_staff': True}, null=True, blank=True,
                                         on_delete=models.SET_NULL)
-    # mentor = models.ForeignKey(UserProfile, related_name='bmentor', limit_choices_to={'user__is_staff': True},
-    #                            null=True, blank=True, on_delete=models.SET_NULL, default=None)
-    # faculty_advisor = models.ForeignKey(FacultyAdvisor, blank=True, null=True, default=None, on_delete=models.SET_NULL)
+    faculty_advisor = models.ForeignKey(FacultyAdvisor, blank=True, null=True, default=None, on_delete=models.SET_NULL)
     report_link = models.URLField(help_text='Add a drive link to show on board page', null=True, blank=True)
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL,
                                 help_text="Select a carousel gallery to link to this board.")
@@ -86,19 +88,6 @@ class Society(models.Model):
                                 help_text="Upload high quality picture")
     skin = models.CharField(max_length=32, choices=SKIN_CHOICES, blank=True, default='mdb-skin',
                             help_text="Choose a skin while displaying society page.")
-    # captain = models.ForeignKey(UserProfile, related_name='captain', limit_choices_to={'user__is_staff': True},
-    #                             null=True, blank=True, on_delete=models.SET_NULL)
-    # vice_captain_one = models.ForeignKey(UserProfile, related_name='vice_cap_one',
-    #                                      limit_choices_to={'user__is_staff': True},
-    #                                      blank=True, null=True, default=None, on_delete=models.SET_NULL)
-    # vice_captain_two = models.ForeignKey(UserProfile, related_name='vice_cap_two',
-    #                                      limit_choices_to={'user__is_staff': True},
-    #                                      blank=True, null=True, default=None, on_delete=models.SET_NULL)
-    # vice_captain_three = models.ForeignKey(UserProfile, related_name='vice_cap_three',
-    #                                        limit_choices_to={'user__is_staff': True},
-    #                                        blank=True, null=True, default=None, on_delete=models.SET_NULL)
-    # mentor = models.ForeignKey(UserProfile, related_name='smentor', blank=True, null=True, default=None,
-    #                            on_delete=models.SET_NULL)
     student_coordinators = models.ManyToManyField(UserProfile, related_name='student_coordinator',
                                            limit_choices_to={'user__is_staff': True},
                                            blank=True, default=None,help_text="Select all the Student Coordinators of this society. ")

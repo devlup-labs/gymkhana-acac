@@ -62,35 +62,6 @@ v-flex(v-if="!$apollo.queries._societies.loading")
                 NewsTable(:newsList="society.newsSet.edges")
               v-card-text.pa-4.title.text-center(v-else)
                 | There is no news currently
-  v-container.pa-8
-    //- v-flex.md10.offset-md1(
-    //-   v-if="society.captain || society.viceCaptainOne || society.viceCaptainTwo || society.viceCaptainThree || society.mentor"
-    //- )
-    //-   v-card.accent.white--text.elevation-10
-    //-     v-card-title.justify-center.display-1 Key People
-    //-   v-row.justify-space-around
-    //-     v-flex.md4.xs12(v-if="society.captain")
-    //-       CaptainComponent(
-    //-         :profile="society.captain",
-    //-         :designation="'Captain'"
-    //-       )
-    //-     v-flex.md4.xs12(v-if="society.viceCaptainOne")
-    //-       CaptainComponent(
-    //-         :profile="society.viceCaptainOne",
-    //-         :designation="'Vice Captain'"
-    //-       )
-    //-     v-flex.md4.xs12(v-if="society.viceCaptainTwo")
-    //-       CaptainComponent(
-    //-         :profile="society.viceCaptainTwo",
-    //-         :designation="'Vice Captain'"
-    //-       )
-    //-     v-flex.md4.xs12(v-if="society.viceCaptainThree")
-    //-       CaptainComponent(
-    //-         :profile="society.viceCaptainThree",
-    //-         :designation="'Vice Captain'"
-    //-       )
-    //-     v-flex.md4.xs12(v-if="society.mentor")
-    //-       CaptainComponent(:profile="society.mentor", :designation="'Mentor'")
   v-container.pa-5(v-if="society.customHtml")
     span(v-html="society.customHtml")
   v-container.pa-8(v-if="society.studentCoordinators.edges.length", fluid)
