@@ -158,10 +158,10 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "societies",
+              "name": "boards",
               "type": {
                 "kind": "OBJECT",
-                "name": "SocietyNodeConnection",
+                "name": "BoardNodeConnection",
                 "ofType": null
               }
             },
@@ -231,10 +231,10 @@
               "deprecationReason": null,
               "description": null,
               "isDeprecated": false,
-              "name": "clubs",
+              "name": "societies",
               "type": {
                 "kind": "OBJECT",
-                "name": "ClubNodeConnection",
+                "name": "SocietyNodeConnection",
                 "ofType": null
               }
             },
@@ -350,7 +350,7 @@
           "possibleTypes": [
             {
               "kind": "OBJECT",
-              "name": "SocietyNode",
+              "name": "BoardNode",
               "ofType": null
             },
             {
@@ -380,7 +380,7 @@
             },
             {
               "kind": "OBJECT",
-              "name": "ClubNode",
+              "name": "SocietyNode",
               "ofType": null
             },
             {
@@ -449,7 +449,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "SocietyNodeEdge",
+                    "name": "BoardNodeEdge",
                     "ofType": null
                   }
                 }
@@ -459,7 +459,7 @@
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "SocietyNodeConnection",
+          "name": "BoardNodeConnection",
           "possibleTypes": null
         },
         {
@@ -550,7 +550,7 @@
           "possibleTypes": null
         },
         {
-          "description": "A Relay edge containing a `SocietyNode` and its cursor.",
+          "description": "A Relay edge containing a `BoardNode` and its cursor.",
           "enumValues": null,
           "fields": [
             {
@@ -561,7 +561,7 @@
               "name": "node",
               "type": {
                 "kind": "OBJECT",
-                "name": "SocietyNode",
+                "name": "BoardNode",
                 "ofType": null
               }
             },
@@ -585,7 +585,7 @@
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "SocietyNodeEdge",
+          "name": "BoardNodeEdge",
           "possibleTypes": null
         },
         {
@@ -641,7 +641,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "secretary",
+              "name": "president",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserProfileNode",
@@ -653,7 +653,7 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "jointSecretary",
+              "name": "vicePresident",
               "type": {
                 "kind": "OBJECT",
                 "name": "UserProfileNode",
@@ -675,7 +675,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Add a drive link to show on society page",
+              "description": "Add a drive link of annual report to show on board page",
               "isDeprecated": false,
               "name": "reportLink",
               "type": {
@@ -687,7 +687,19 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Select a carousel gallery to link to this society.",
+              "description": "Add a drive link of constitution to show on board page",
+              "isDeprecated": false,
+              "name": "constitutionLink",
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            {
+              "args": [],
+              "deprecationReason": null,
+              "description": "Select a carousel gallery to link to this board.",
               "isDeprecated": false,
               "name": "gallery",
               "type": {
@@ -699,7 +711,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Add custom HTML to view on society page.",
+              "description": "Add custom HTML to view on board page.",
               "isDeprecated": false,
               "name": "customHtml",
               "type": {
@@ -711,7 +723,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "This will be used as URL. /society/slug",
+              "description": "This will be used as URL. /board/slug",
               "isDeprecated": false,
               "name": "slug",
               "type": {
@@ -806,13 +818,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "clubSet",
+              "name": "societySet",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ClubNodeConnection",
+                  "name": "SocietyNodeConnection",
                   "ofType": null
                 }
               }
@@ -949,7 +961,7 @@
             }
           ],
           "kind": "OBJECT",
-          "name": "SocietyNode",
+          "name": "BoardNode",
           "possibleTypes": null
         },
         {
@@ -2143,7 +2155,7 @@
                   "name": null,
                   "ofType": {
                     "kind": "OBJECT",
-                    "name": "ClubNodeEdge",
+                    "name": "SocietyNodeEdge",
                     "ofType": null
                   }
                 }
@@ -2153,11 +2165,11 @@
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "ClubNodeConnection",
+          "name": "SocietyNodeConnection",
           "possibleTypes": null
         },
         {
-          "description": "A Relay edge containing a `ClubNode` and its cursor.",
+          "description": "A Relay edge containing a `SocietyNode` and its cursor.",
           "enumValues": null,
           "fields": [
             {
@@ -2168,7 +2180,7 @@
               "name": "node",
               "type": {
                 "kind": "OBJECT",
-                "name": "ClubNode",
+                "name": "SocietyNode",
                 "ofType": null
               }
             },
@@ -2192,7 +2204,7 @@
           "inputFields": null,
           "interfaces": [],
           "kind": "OBJECT",
-          "name": "ClubNodeEdge",
+          "name": "SocietyNodeEdge",
           "possibleTypes": null
         },
         {
@@ -2236,13 +2248,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "society",
+              "name": "board",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "SocietyNode",
+                  "name": "BoardNode",
                   "ofType": null
                 }
               }
@@ -2250,15 +2262,15 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Specify type as Club or Team.",
+              "description": "Specify type as Society or Team.",
               "isDeprecated": false,
-              "name": "ctype",
+              "name": "stype",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "ENUM",
-                  "name": "ClubCtype",
+                  "name": "SocietyStype",
                   "ofType": null
                 }
               }
@@ -2294,12 +2306,12 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Choose a skin while displaying club page.",
+              "description": "Choose a skin while displaying society page.",
               "isDeprecated": false,
               "name": "skin",
               "type": {
                 "kind": "ENUM",
-                "name": "ClubSkin",
+                "name": "SocietySkin",
                 "ofType": null
               }
             },
@@ -2433,7 +2445,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Select a gallery to link to this club.",
+              "description": "Select a gallery to link to this society.",
               "isDeprecated": false,
               "name": "gallery",
               "type": {
@@ -2457,7 +2469,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "Add custom HTML to view on club page.",
+              "description": "Add custom HTML to view on society page.",
               "isDeprecated": false,
               "name": "customHtml",
               "type": {
@@ -2469,7 +2481,7 @@
             {
               "args": [],
               "deprecationReason": null,
-              "description": "This will be used as URL. /club/slug",
+              "description": "This will be used as URL. /society/slug",
               "isDeprecated": false,
               "name": "slug",
               "type": {
@@ -2679,7 +2691,7 @@
             }
           ],
           "kind": "OBJECT",
-          "name": "ClubNode",
+          "name": "SocietyNode",
           "possibleTypes": null
         },
         {
@@ -2687,7 +2699,7 @@
           "enumValues": [
             {
               "deprecationReason": null,
-              "description": "Club",
+              "description": "Society",
               "isDeprecated": false,
               "name": "C"
             },
@@ -2702,7 +2714,7 @@
           "inputFields": null,
           "interfaces": null,
           "kind": "ENUM",
-          "name": "ClubCtype",
+          "name": "SocietyStype",
           "possibleTypes": null
         },
         {
@@ -2773,7 +2785,7 @@
           "inputFields": null,
           "interfaces": null,
           "kind": "ENUM",
-          "name": "ClubSkin",
+          "name": "SocietySkin",
           "possibleTypes": null
         },
         {
@@ -2989,13 +3001,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "club",
+              "name": "society",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ClubNode",
+                  "name": "SocietyNode",
                   "ofType": null
                 }
               }
@@ -3216,10 +3228,10 @@
               "deprecationReason": null,
               "description": "Leave blank to make this a general event.",
               "isDeprecated": false,
-              "name": "club",
+              "name": "society",
               "type": {
                 "kind": "OBJECT",
-                "name": "ClubNode",
+                "name": "SocietyNode",
                 "ofType": null
               }
             },
@@ -3419,10 +3431,10 @@
               "deprecationReason": null,
               "description": "Leave blank to make this a general news.",
               "isDeprecated": false,
-              "name": "club",
+              "name": "society",
               "type": {
                 "kind": "OBJECT",
-                "name": "ClubNode",
+                "name": "SocietyNode",
                 "ofType": null
               }
             },
@@ -3695,13 +3707,13 @@
               "deprecationReason": null,
               "description": "",
               "isDeprecated": false,
-              "name": "society",
+              "name": "board",
               "type": {
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "SocietyNodeConnection",
+                  "name": "BoardNodeConnection",
                   "ofType": null
                 }
               }

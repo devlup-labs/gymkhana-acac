@@ -20,8 +20,8 @@ export const NEWS_FRAGMENT = gql`
   ${FULL_NAME_FRAGMENT}
 `;
 
-export const CLUB_NEWS_FRAGMENT = gql`
-  fragment NewsFields on ClubNode {
+export const SOCIETY_NEWS_FRAGMENT = gql`
+  fragment NewsFields on SocietyNode {
     newsSet {
       edges {
         node {

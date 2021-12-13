@@ -1,6 +1,6 @@
 from django.utils import timezone
 from django.views.generic import TemplateView, DetailView, ListView, CreateView
-from .models import Society, Club, Senate, Activity, Contact
+from .models import Board, Society, Senate, Activity, Contact
 from festivals.models import Festival
 from oauth.models import UserProfile
 from .forms import ContactForm
@@ -22,8 +22,8 @@ class HomeView(MaintenanceAndNavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         carousel = Gallery.objects.filter(title='HomePageCarousel').filter(is_public=True).first()
-        events = Event.objects.filter(club=None)[:5]
-        news = News.objects.filter(club=None)[:5]
+        events = Event.objects.filter(society=None)[:5]
+        news = News.objects.filter(society=None)[:5]
         festivals = Festival.objects.all()
         gallery = Gallery.objects.filter(title='Home Page Gallery').filter(is_public=True).first()
         context['carousel'] = carousel
@@ -34,19 +34,19 @@ class HomeView(MaintenanceAndNavigationMixin, TemplateView):
         return context
 
 
-class SocietyView(MaintenanceAndNavigationMixin, DetailView):
-    template_name = 'main/society.html'
-    model = Society
+class BoardView(MaintenanceAndNavigationMixin, DetailView):
+    template_name = 'main/board.html'
+    model = Board
 
     def get_context_data(self, **kwargs):
-        context = super(SocietyView, self).get_context_data(**kwargs)
-        raw = self.object.club_set.filter(published=True)
-        clubs = raw.filter(ctype='C')
-        teams = raw.filter(ctype='T')
-        events = Event.objects.filter(club__society=self.object).filter(published=True).filter(
+        context = super(BoardView, self).get_context_data(**kwargs)
+        raw = self.object.society_set.filter(published=True)
+        socities = raw.filter(stype='S')
+        teams = raw.filter(stype='T')
+        events = Event.objects.filter(society__board=self.object).filter(published=True).filter(
             date__gte=timezone.now())[:5]
-        news = News.objects.filter(club__society=self.object)[:5]
-        context['club_list'] = clubs
+        news = News.objects.filter(society__board=self.object)[:5]
+        context['society_list'] = socities
         context['team_list'] = teams
         context['event_list'] = events
         context['news_list'] = news
@@ -62,19 +62,21 @@ class SenateView(MaintenanceAndNavigationMixin, DetailView):
         return context
 
 
-class ClubView(MaintenanceAndNavigationMixin, DetailView):
-    template_name = 'main/club.html'
-    model = Club
+class SocietyView(MaintenanceAndNavigationMixin, DetailView):
+    template_name = 'main/society.html'
+    model = Society
 
     def get_context_data(self, **kwargs):
-        context = super(ClubView, self).get_context_data(**kwargs)
-        events = Event.objects.filter(club=self.object).filter(published=True).filter(date__gte=timezone.now())[:5]
-        activities = Activity.objects.filter(club=self.object)
-        news = News.objects.filter(club=self.object)[:5]
+        context = super(SocietyView, self).get_context_data(**kwargs)
+        events = Event.objects.filter(society=self.object).filter(published=True).filter(date__gte=timezone.now())[:5]
+        activities = Activity.objects.filter(society=self.object)
+        news = News.objects.filter(society=self.object)[:5]
+        coordinators = self.object.student_coordinators.all()
         members = self.object.core_members.all()
         context['event_list'] = events
         context['activity_list'] = activities
         context['news_list'] = news
+        context['student_coordinators'] = coordinators
         context['member_list'] = members
         return context
 
@@ -106,7 +108,7 @@ class OfficeView(MaintenanceAndNavigationMixin, TemplateView):
             'general_secretary': UserProfile.objects.filter(
                 roll=secretary_roll_no).first() if UserProfile.objects.filter(
                 roll=secretary_roll_no).exists() else None,
-            'societies': Society.objects.filter(year=current_year),
+            'boards': Board.objects.filter(year=current_year),
             'senate_secretary': Senate.objects.filter(year=current_year).first().senatemembership_set.filter(
                 role='SECY').first().userprofile if Senate.objects.filter(
                 year=current_year).exists() else None

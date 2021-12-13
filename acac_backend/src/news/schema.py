@@ -15,5 +15,5 @@ class NewsNode(DjangoObjectType):
         interfaces = (relay.Node,)
 
     def resolve_cover(self, info):
-        from gymkhana.utils import build_image_types
+        from acac_backend.utils import build_image_types
         return ImageType(sizes=build_image_types(info.context, self.cover, 'festival'))

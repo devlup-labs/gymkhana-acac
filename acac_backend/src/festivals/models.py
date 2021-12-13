@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 from django.urls import reverse
 from versatileimagefield.fields import VersatileImageField
 from ckeditor_uploader.fields import RichTextUploadingField
-from main.models import Society
+from main.models import Board
 from oauth.models import UserProfile
 
 
@@ -14,7 +14,7 @@ class Festival(models.Model):
     photo = VersatileImageField(upload_to='festival')
     about = RichTextUploadingField(blank=True, null=True)
     slug = models.SlugField(unique=True, help_text="This will be used as URL. /festivals/slug")
-    society = models.ManyToManyField(Society, blank=True)
+    board = models.ManyToManyField(Board, blank=True)
     link = models.URLField(help_text='Override default generated URL (useful for festival having separate website)',
                            blank=True, null=True, default=None)
     published = models.BooleanField(default=False)

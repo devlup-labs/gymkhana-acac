@@ -2,7 +2,7 @@
   v-row.justify-center.mt-5
     v-hover(v-slot:default="{ hover }")
       v-card.mx-auto(
-        :to="{ name: node.__typename === 'SocietyNode' ? 'society' : 'club' , params: { slug: node.slug } }"
+        :to="{ name: node.__typename === 'BoardNode' ? 'board' : 'society' , params: { slug: node.slug } }"
         :elevation="hover ? 15 : 2"
         height="80%"
         width="80%"
@@ -12,7 +12,7 @@
           min-height="250px"
         )
           v-layout.align-end.fill-height
-            v-card-text(v-if="node.__typename === 'SocietyNode'").my-6.title.text-center.stripe {{ node.name }}
+            v-card-text(v-if="node.__typename === 'BoardNode'").my-6.title.text-center.stripe {{ node.name }}
             v-card-text(v-else).my-10.text-center.stripe.subtitle-1.font-weight-medium {{ node.name }}
 </template>
 

@@ -7,8 +7,8 @@ import KonnektHome from "../components/konnekt/KonnektHome";
 import KonnektSearch from "../components/konnekt/KonnektSearch";
 import ProfileDetail from "../views/ProfileDetail";
 import ProfileEdit from "../views/ProfileEdit";
+import Board from "../views/Board";
 import Society from "../views/Society";
-import Club from "../views/Club";
 import ForumHome from "../components/forum/ForumHome";
 import ForumTopic from "../components/forum/ForumTopic";
 import Forum from "../views/Forum";
@@ -132,14 +132,14 @@ const routes = [
     component: ProfileEdit
   },
   {
+    name: "board",
+    path: "/board/:slug",
+    component: Board
+  },
+  {
     name: "society",
     path: "/society/:slug",
     component: Society
-  },
-  {
-    name: "club",
-    path: "/club/:slug",
-    component: Club
   }
 ];
 

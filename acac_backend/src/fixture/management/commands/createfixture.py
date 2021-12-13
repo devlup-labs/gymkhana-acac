@@ -7,7 +7,7 @@ from fixture.festivalfixture import EventFactory as FestivalEventFactory
 from fixture.senatemembershipfixture import MemberWithSenateFactory
 from fixture.answerfixture import AnswerFactory
 from fixture.topicfixture import TopicFactory
-from fixture.clubfixture import ClubFactory
+from fixture.societyfixture import SocietyFactory
 import random
 from main.models import UserProfile
 from django.db.utils import IntegrityError
@@ -27,7 +27,7 @@ class Command(BaseCommand):
         self.create_objects(ActivityFactory)
         self.create_objects(EventFactory)
         self.create_objects(FestivalEventFactory)
-        self.create_objects(ClubFactory, m2m=True)
+        self.create_objects(SocietyFactory, m2m=True)
         self.create_objects(MemberWithSenateFactory)
         self.create_objects(ContactFactory)
         self.create_objects(AnswerFactory, 20, m2m=True)

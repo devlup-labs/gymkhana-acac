@@ -20,7 +20,7 @@ class UploadForm(forms.Form):
         with tar_open(fileobj=self.cleaned_data['file'].file, mode='r:gz') as archive:
             archive.extractall(settings.VUE_ROOT)
             # Extract index.html to templates dir
-            archive.extract(archive.getmember('dist/index.html'), settings.TEMPLATES[0]['DIRS'][0])
+            #archive.extract(archive.getmember('dist/index.html'), settings.TEMPLATES[0]['DIRS'][0])
             archive.close()
         move(join(settings.VUE_ROOT, 'dist/static/js'), join(settings.VUE_ROOT, 'dist/js'))
         move(join(settings.VUE_ROOT, 'dist/static/css'), join(settings.VUE_ROOT, 'dist/css'))

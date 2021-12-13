@@ -12,7 +12,6 @@ class UserProfileUpdateForm(forms.ModelForm):
         model = UserProfile
         fields = ['year', 'phone', 'avatar', 'cover', 'hometown', 'skills', 'about']
 
-
 class SocialLinkForm(forms.ModelForm):
     class Meta:
         model = SocialLink
@@ -50,3 +49,5 @@ class UserProfileForm(forms.ModelForm):
         if dob_date > date.today() - timedelta(days=13 * 365):
             raise forms.ValidationError("You must be greater than 13 years")
         return self.cleaned_data['dob']
+
+

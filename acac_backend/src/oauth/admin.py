@@ -9,7 +9,6 @@ class UserProfileInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = 'Profile'
 
-
 class SocialLinkInline(admin.StackedInline):
     model = SocialLink
     can_delete = True
