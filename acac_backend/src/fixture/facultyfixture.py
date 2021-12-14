@@ -6,9 +6,9 @@ COLOUR = ["yellow", "black", "purple", "red", "orange", "green", '#084594', '#21
           ]
 
 
-class FacultyAdvisorFactory(factory.django.DjangoModelFactory):
+class FacultyFactory(factory.django.DjangoModelFactory):
     class Meta:
-        model = 'main.FacultyAdvisor'
+        model = 'main.Faculty'
 
     name = factory.Faker('sentence', nb_words=2)
     email = factory.Faker('email')

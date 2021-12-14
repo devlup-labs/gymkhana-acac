@@ -45,15 +45,15 @@
             NewsTable(:newsList="board.pastNews.edges")
           v-card-text(v-else).title.text-center
             | There is no news for the current Board.
-    v-row(class="grey lighten-3" v-if="board.facultyAdvisor || board.vicePresident").pa-5
+    v-row(class="grey lighten-3" v-if="board.president || board.vicePresident").pa-5
       v-col(cols="12" md="8" offset-md="2")
         v-card(class="accent white--text")
           v-card-title.display-1.justify-center Key People
       v-col(cols="12")
         v-container
           v-row.justify-space-around
-            v-col(cols="12" md="4" v-if="board.facultyAdvisor")
-              FacultyAdvisorCard(:avatarSize="120" :profile="board.facultyAdvisor" :designation="'President'" )
+            v-col(cols="12" md="4" v-if="board.president")
+              FacultyCard(:avatarSize="120" :profile="board.president" :designation="'President'" )
             v-col(cols="12" md="4" v-if="board.vicePresident")
               OfficeBearerCard(:avatarSize="120" :profile="board.vicePresident" :designation="'Vice President'")
             
@@ -63,7 +63,7 @@
 import Footer from "../components/common/Footer";
 import EventTable from "../components/common/tables/EventTable";
 import OfficeBearerCard from "../components/OfficeBearerCard";
-import FacultyAdvisorCard from "../components/FacultyAdvisorCard";
+import FacultyCard from "../components/FacultyCard";
 import NewsTable from "../components/common/tables/NewsTable";
 import { GET_BOARD_DATA_QUERY } from "../graphql/queries/boardDataQuery";
 import StripedCard from "../components/common/cards/StripedCard";
@@ -74,19 +74,26 @@ export default {
       query: GET_BOARD_DATA_QUERY,
       variables() {
         return {
-          slugText: this.$route.params.slug,
+          slugText: this.$route.params.slug
         };
       },
-      update: (data) => data.boards,
-    },
+      update: data => data.boards
+    }
   },
   name: "Board",
-  components: { StripedCard, NewsTable, OfficeBearerCard, FacultyAdvisorCard, EventTable, Footer },
+  components: {
+    StripedCard,
+    NewsTable,
+    OfficeBearerCard,
+    FacultyCard,
+    EventTable,
+    Footer
+  },
   computed: {
     board() {
       return this._boards.edges[0].node;
-    },
-  },
+    }
+  }
 };
 </script>
 

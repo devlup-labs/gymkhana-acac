@@ -7,7 +7,7 @@ from graphql_jwt.decorators import login_required
 from main.schema import ImageType
 from oauth.forms import UserProfileUpdateForm, UserProfileForm
 from oauth.models import UserProfile, SocialLink
-from main.models import FacultyAdvisor
+from main.models import Faculty
 
 
 class SocialLinks(DjangoObjectType):
@@ -90,7 +90,7 @@ class FacultyProfileNode(DjangoObjectType):
 
     class Meta:
         filter_fields = ['name']
-        model = FacultyAdvisor
+        model = Faculty
         fields = ('__all__')
         interfaces = (relay.Node,)
     

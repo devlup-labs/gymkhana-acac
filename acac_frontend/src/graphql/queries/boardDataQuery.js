@@ -4,7 +4,7 @@ import { SIZES_FRAGMENT } from "../fragments/sizesFragment";
 import { EVENT_FRAGMENT } from "../fragments/eventFragment";
 import { NEWS_FRAGMENT } from "../fragments/newsFragment";
 import { SOCIETY_DATA_FRAGMENT } from "../fragments/societyDataFragment";
-import { FACULTY_ADVISOR_FRAGMENT } from "../fragments/facultyAdvisorFragment";
+import { FACULTY_FRAGMENT } from "../fragments/facultyFragment";
 
 export const GET_BOARD_DATA_QUERY = gql`
   query boards($slugText: String!) {
@@ -17,8 +17,8 @@ export const GET_BOARD_DATA_QUERY = gql`
           vicePresident {
             ...OfficeBearerFields
           }
-          facultyAdvisor{
-            ...FacultyAdvisorFields
+          president {
+            ...FacultyFields
           }
           slug
           cover {
@@ -58,5 +58,5 @@ export const GET_BOARD_DATA_QUERY = gql`
   ${EVENT_FRAGMENT}
   ${NEWS_FRAGMENT}
   ${SOCIETY_DATA_FRAGMENT}
-  ${FACULTY_ADVISOR_FRAGMENT}
+  ${FACULTY_FRAGMENT}
 `;

@@ -25,7 +25,7 @@ SKIN_CHOICES = (
 )
 
 
-class FacultyAdvisor(models.Model):
+class Faculty(models.Model):
     #validators
     contact = RegexValidator(r'^[0-9]{10}$', message='Not a valid number!')
     # Database Model
@@ -34,6 +34,10 @@ class FacultyAdvisor(models.Model):
     cover = VersatileImageField(upload_to='cover', blank=True, null=True)
     avatar = VersatileImageField(upload_to='avatar',blank=True, null=True)
     phone = models.CharField(max_length=10, validators=[contact])
+
+    class Meta:
+        ordering = ["name"]
+        verbose_name_plural = "Faculty"
 
     def __str__(self):
         return self.name
@@ -48,10 +52,13 @@ class Board(models.Model):
     cover = VersatileImageField('Cover', upload_to='board_%Y', help_text="Upload high quality picture")
     skin = models.CharField(max_length=32, choices=SKIN_CHOICES, blank=True, default='mdb-skin',
                             help_text="Choose a skin while displaying board page.")
+    secretary = models.ForeignKey(UserProfile, related_name='secy',
+                                        limit_choices_to={'user__is_staff': True}, null=True, blank=True,
+                                        on_delete=models.SET_NULL)
     vice_president = models.ForeignKey(UserProfile, related_name='vice_president',
                                         limit_choices_to={'user__is_staff': True}, null=True, blank=True,
                                         on_delete=models.SET_NULL)
-    faculty_advisor = models.ForeignKey(FacultyAdvisor, blank=True, null=True, default=None, on_delete=models.SET_NULL)
+    president = models.ForeignKey(Faculty, blank=True, null=True, default=None, on_delete=models.SET_NULL)
     report_link = models.URLField(help_text='Add a drive link to show on board page', null=True, blank=True)
     gallery = models.ForeignKey(Gallery, blank=True, null=True, on_delete=models.SET_NULL,
                                 help_text="Select a carousel gallery to link to this board.")
@@ -145,7 +152,7 @@ class Senate(models.Model):
     skin = models.CharField(max_length=32, choices=SKIN_CHOICES, blank=True, default='mdb-skin',
                             help_text="Choose a skin while displaying senate page.")
     members = models.ManyToManyField(UserProfile, through='SenateMembership', through_fields=('senate', 'userprofile'))
-    coordinator_student = models.ForeignKey(FacultyAdvisor, blank=True, null=True, default=None,
+    coordinator_student = models.ForeignKey(Faculty, blank=True, null=True, default=None,
                                             on_delete=models.SET_NULL)
     report_link = models.URLField(help_text='Add a drive link of annual report to show on board page', null=True, blank=True)
     constitution_link = models.URLField(help_text='Add a drive link of constitution to show on board page', null=True, blank=True)

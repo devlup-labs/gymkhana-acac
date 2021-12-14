@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: "FacultyAdvisorCard",
+  name: "FacultyCard",
   props: {
     avatarSize: { Type: Number, required: true },
     profile: { type: Object, required: true },

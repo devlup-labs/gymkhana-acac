@@ -1,6 +1,6 @@
 import factory
 import random
-from fixture.facultyadvisorfixture import FacultyAdvisorFactory
+from fixture.facultyfixture import FacultyFactory
 
 COLOUR = ["yellow", "black", "purple", "red", "orange", "green", '#084594', '#2171b5', '#4292c6', '#6baed6', '#9ecae1',
           '#c6dbef', '#deebf7', '#f7fbff'
@@ -20,7 +20,7 @@ class SenateFactory(factory.django.DjangoModelFactory):
     cover = factory.django.ImageField(color=random.choice(COLOUR))
     skin = random.choice(SKIN)
     # members = models.ManyToManyField(UserProfile, through='SenateMembership',through_fields=('senate', 'userprofile'))
-    coordinator_student = factory.SubFactory(FacultyAdvisorFactory)
+    coordinator_student = factory.SubFactory(FacultyFactory)
     custom_html = factory.Faker('sentence', nb_words=20)
     slug = factory.Sequence(lambda n: 'senate-%d' % n)
     is_active = True

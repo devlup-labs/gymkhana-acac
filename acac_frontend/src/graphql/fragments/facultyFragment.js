@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 import { SIZES_FRAGMENT } from "./sizesFragment";
 
-export const FACULTY_ADVISOR_FRAGMENT = gql`
-  fragment FacultyAdvisorFields on FacultyProfileNode {
+export const FACULTY_FRAGMENT = gql`
+  fragment FacultyFields on FacultyProfileNode {
     cover {
       ...Sizes
     }

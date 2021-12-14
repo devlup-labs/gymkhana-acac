@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Board, Society, SocialLink, Senate, SenateMembership, Activity, Contact, FacultyAdvisor
+from .models import Board, Society, SocialLink, Senate, SenateMembership, Activity, Contact, Faculty
 
 
 class MembershipInline(admin.StackedInline):
@@ -11,7 +11,7 @@ class MembershipInline(admin.StackedInline):
 class SenateAdmin(admin.ModelAdmin):
     inlines = (MembershipInline,)
 
-class FacultyAdvisorAdmin(admin.ModelAdmin):
+class FacultyAdmin(admin.ModelAdmin):
     #prepopulated_fields = {"slug": ("name",)}
     list_display = ('name',)
 
@@ -20,6 +20,7 @@ class BoardAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name", "year")}
     list_display = ('name', 'is_active', 'year')
     list_filter = ('year', 'is_active')
+    exclude = ('secretary',)
 
 
 class SocietyAdmin(admin.ModelAdmin):
@@ -39,7 +40,7 @@ main_models = [
     Contact
 ]
 
-admin.site.register(FacultyAdvisor, FacultyAdvisorAdmin)
+admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Society, SocietyAdmin)
 admin.site.register(Board, BoardAdmin)
 admin.site.register(Senate, SenateAdmin)
