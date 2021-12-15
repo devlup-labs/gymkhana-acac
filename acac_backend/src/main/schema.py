@@ -6,7 +6,7 @@ from events.models import Event
 from events.schema import EventNode
 from gallery.schema import ImageType
 from acac_backend.utils import build_image_types
-from main.models import Board, Society, Activity
+from main.models import Board, Society, Activity, Senate
 from graphene_django import DjangoObjectType, DjangoConnectionField
 
 from news.models import News
@@ -79,3 +79,13 @@ class GalleryPhoto(DjangoObjectType):
 
     def resolve_image(self, info):
         return ImageType(sizes=build_image_types(request=info.context, image=self.image, key_set='image'))
+
+class SenateNode(DjangoObjectType):
+    class Meta:
+        model = Senate
+        #fields = ('gen_secy_senate', 'gen_secy_acac')
+        fields = (
+            'name', 'slug', 'gen_secy_senate', 'gen_secy_acac', 'description', 'cover', 'report_link',
+            'is_active', 'custom_html')
+        filter_fields = ('slug', 'is_active')
+        interfaces = (relay.Node,)

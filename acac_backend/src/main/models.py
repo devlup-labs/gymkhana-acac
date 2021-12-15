@@ -152,13 +152,13 @@ class Senate(models.Model):
     cover = VersatileImageField('Cover', upload_to='society_%Y', help_text="Upload high quality picture")
     skin = models.CharField(max_length=32, choices=SKIN_CHOICES, blank=True, default='mdb-skin',
                             help_text="Choose a skin while displaying senate page.")
-    members = models.ManyToManyField(UserProfile, through='SenateMembership', through_fields=('senate', 'userprofile'))
-    coordinator_student = models.ForeignKey(Faculty, blank=True, null=True, default=None,
-                                            on_delete=models.SET_NULL)
-    report_link = models.URLField(help_text='Add a drive link of annual report to show on board page', null=True, blank=True)
-    constitution_link = models.URLField(help_text='Add a drive link of constitution to show on board page', null=True, blank=True)
+    gen_secy_senate = models.ForeignKey(UserProfile, related_name='gen_secy_senate', limit_choices_to={'user__is_staff': True},
+                                null=True, blank=True, on_delete=models.SET_NULL)
+    gen_secy_acac = models.ForeignKey(UserProfile, related_name='gen_secy_acac', limit_choices_to={'user__is_staff': True},
+                                null=True, blank=True, on_delete=models.SET_NULL)
+    report_link = models.URLField(help_text='Add a drive link to show on senate page', null=True, blank=True)
     custom_html = models.TextField(blank=True, null=True, default=None,
-                                   help_text="Add custom HTML to view on board page.")
+                                   help_text="Add custom HTML to view on society page.")
     slug = models.SlugField(unique=True, help_text="This will be used as URL. /senate/slug")
     is_active = models.BooleanField(default=False)
     year = models.CharField(max_length=4, choices=YEAR_CHOICES, validators=[valid_year])

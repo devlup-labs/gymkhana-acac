@@ -71,6 +71,17 @@
         v-row.justify-center
           v-col(cols="12" sm="6" v-for="({ node }, i) in boards.edges" :key="i")
             StripedCard(:node="node")
+    v-container.pa-8
+      v-card(class="accent white--text").elevation-10
+        v-card-title.justify-center.display-1 Key People
+      v-col(cols="12" v-if="!$apollo.queries.senate.loading")
+        v-container
+          v-row.justify-space-around
+            v-row(cols="12" md="4" v-for="({ node }, i) in senate.edges" :key="i")
+              v-col(v-if="node.genSecySenate")
+                OfficeBearerCard(:avatarSize="120" :profile="node.genSecySenate" :designation="'General Secretary Senate'")
+              v-col(v-if="node.genSecyAcac")
+                OfficeBearerCard(:avatarSize="120" :profile="node.genSecyAcac" :designation="'General Secretary ACAC'")
     v-img(src="../assets/other/background.svg" v-if="!$apollo.queries.homeGallery.loading && homeGallery" :min-height="carouselHeight")
       div.mask.fill-height
         v-container
@@ -89,6 +100,8 @@ import NewsTable from "../components/common/tables/NewsTable";
 import EventTable from "../components/common/tables/EventTable";
 import { GET_HOME_GALLERY_QUERY } from "../graphql/queries/homeGalleryQuery";
 import CustomLightGallery from "../components/common/CustomLightGallery";
+import { GET_SENATE_DATA_QUERY } from "../graphql/queries/senateDataQuery";
+import OfficeBearerCard from "../components/OfficeBearerCard";
 
 export default {
   components: {
@@ -96,7 +109,8 @@ export default {
     EventTable,
     NewsTable,
     StripedCard,
-    FestivalCarousel
+    FestivalCarousel,
+    OfficeBearerCard
   },
   apollo: {
     boards: {
@@ -110,6 +124,9 @@ export default {
     },
     homeGallery: {
       query: GET_HOME_GALLERY_QUERY
+    },
+    senate: {
+      query: GET_SENATE_DATA_QUERY
     }
   },
   data: () => ({
@@ -122,6 +139,7 @@ export default {
   },
   mounted() {
     this.onResize();
+    console.log(this);
   }
 };
 </script>
