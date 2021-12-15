@@ -14,6 +14,7 @@ export const GET_BOARD_DATA_QUERY = gql`
           name
           description
           reportLink
+          constitutionLink
           vicePresident {
             ...OfficeBearerFields
           }
