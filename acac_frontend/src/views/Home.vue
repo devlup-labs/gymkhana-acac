@@ -139,7 +139,6 @@ export default {
   },
   mounted() {
     this.onResize();
-    console.log(this);
   }
 };
 </script>
