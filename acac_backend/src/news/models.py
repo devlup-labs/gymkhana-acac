@@ -1,6 +1,6 @@
 from django.db import models
 from oauth.models import UserProfile
-from main.models import Club
+from main.models import Society
 from ckeditor_uploader.fields import RichTextUploadingField
 from versatileimagefield.fields import VersatileImageField
 
@@ -11,7 +11,7 @@ class News(models.Model):
                                 help_text="Upload high quality image to use as cover photo.")
     author = models.ForeignKey(UserProfile, null=True, on_delete=models.SET_NULL)
     content = RichTextUploadingField()
-    club = models.ForeignKey(Club, blank=True, null=True, on_delete=models.CASCADE, default=None,
+    society = models.ForeignKey(Society, blank=True, null=True, on_delete=models.CASCADE, default=None,
                              help_text="Leave blank to make this a general news.")
     date = models.DateField(editable=True)
 

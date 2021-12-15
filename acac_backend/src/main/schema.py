@@ -6,22 +6,22 @@ from events.models import Event
 from events.schema import EventNode
 from gallery.schema import ImageType
 from acac_backend.utils import build_image_types
-from main.models import Society, Club, Activity
+from main.models import Board, Society, Activity
 from graphene_django import DjangoObjectType, DjangoConnectionField
 
 from news.models import News
 from news.schema import NewsNode
 
 
-class SocietyNode(DjangoObjectType):
+class BoardNode(DjangoObjectType):
     cover = Field(ImageType)
     upcoming_events = DjangoConnectionField(EventNode, max_limit=5)
     past_news = DjangoConnectionField(NewsNode, max_limit=5)
 
     class Meta:
-        model = Society
+        model = Board
         fields = (
-            'name', 'slug', 'secretary', 'joint_secretary', 'description', 'mentor', 'club_set', 'cover', 'report_link',
+            'name', 'slug', 'vice_president','president', 'description', 'society_set', 'cover', 'report_link', 'constitution_link',
             'is_active',
             'gallery', 'custom_html')
         filter_fields = ('slug', 'is_active')
@@ -30,22 +30,22 @@ class SocietyNode(DjangoObjectType):
     def resolve_cover(self, info):
         return ImageType(sizes=build_image_types(info.context, self.cover, 'festival'))
 
-    def resolve_club_set(self, info, *args, **kwargs):
-        return self.club_set.filter(published=True)
+    def resolve_society_set(self, info, *args, **kwargs):
+        return self.society_set.filter(published=True)
 
     def resolve_upcoming_events(self, info, *args, **kwargs):
-        return Event.objects.filter(club__society=self).filter(published=True).filter(date__gte=timezone.now())[
-            :kwargs.get('first', 5)]
+        return Event.objects.filter(society__board=self).filter(published=True).filter(date__gte=timezone.now())[
+               :kwargs.get('first', 5)]
 
     def resolve_past_news(self, info, *args, **kwargs):
-        return News.objects.filter(club__society=self)[:kwargs.get('first', 5)]
+        return News.objects.filter(society__board=self)[:kwargs.get('first', 5)]
 
 
-class ClubNode(DjangoObjectType):
+class SocietyNode(DjangoObjectType):
     cover = Field(ImageType)
 
     class Meta:
-        model = Club
+        model = Society
         fields = '__all__'
         filter_fields = ('slug', 'published')
         interfaces = (relay.Node,)
@@ -64,7 +64,7 @@ class ActivityNode(DjangoObjectType):
 class GalleryNode(DjangoObjectType):
     class Meta:
         model = Gallery
-        exclude = ('society_set', 'club_set')
+        exclude = ('board_set', 'society_set')
         filter_fields = ('slug',)
         interfaces = (relay.Node,)
 

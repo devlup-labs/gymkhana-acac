@@ -85,16 +85,17 @@ class UserProfile(models.Model):
     )
     BRANCH_CHOICES = (
         ('CSE', 'Computer Science and Engineering'),
+        ('AI',' Artificial Intellingence and Data Science'),
         ('EE', 'Electrical Engineering'),
         ('ME', 'Mechanical Engineering'),
-        ('CH', 'Chemistry'),
+        ('CI', ' Civil and Infrastructure Engineering'),
+        ('CH', ' Chemichal Engineering'),
         ('MA', 'Mathematics'),
         ('PHY', 'Physics'),
         ('MME', 'Metallurgical and Materials Engineering'),
         ('HSS', 'Humanities and Social Sciences'),
-        ('BBE', 'Biosciences and Bioengineering'),
-        ('BISS', 'BISS'),
-        ('SS', 'SS')
+        ('BB', 'Bioscience and Bioengineering'),
+        ('SME',' Management and Entrepreneurship')
     )
     # Database Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.test import TestCase, RequestFactory, override_settings
 from django.urls import reverse
-from gymkhana.wsgi import application
+from acac_backend.wsgi import application
 
 
 class WSGITestCase(TestCase):

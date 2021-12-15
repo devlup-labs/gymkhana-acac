@@ -12,7 +12,7 @@ from forum.models import Topic
 from forum.schema import TopicNode, CreateTopicMutation, AddAnswerMutation, UpvoteMutaiton, DeleteMutation
 from konnekt.schema import Query as KonnektQuery
 from oauth.schema import UserProfileNode, UserNode, ProfileMutation, CreateProfileMutation
-from main.schema import SocietyNode, ClubNode, GalleryNode
+from main.schema import BoardNode, SocietyNode, GalleryNode
 
 
 class SearchResult(graphene.Union):
@@ -41,8 +41,8 @@ class NodeType(graphene.Enum):
 
 class PublicQuery(graphene.ObjectType):
     node = relay.Node.Field()
+    boards = DjangoFilterConnectionField(BoardNode)
     societies = DjangoFilterConnectionField(SocietyNode)
-    clubs = DjangoFilterConnectionField(ClubNode)
     festivals = DjangoFilterConnectionField(FestivalNode)
     home_carousel = graphene.Field(GalleryNode)
     home_gallery = graphene.Field(GalleryNode)
@@ -73,7 +73,7 @@ class PrivateQuery(KonnektQuery, PublicQuery):
 
     def resolve_nodes(self, info, query=None, node_type=None, first=None, last=None, before=None, after=None):
         # TODO: Add logic to paginate search based on first, last, before and after params
-        node = UserProfileNode if node_type == UserProfileNode else TopicNode
+        node = UserProfileNode if node_type == UserProfileNode else TopicNode 
         return node.search(query, info)
 
     def resolve_topics_by_user(self, info):

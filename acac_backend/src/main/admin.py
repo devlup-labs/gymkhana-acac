@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Society, Club, SocialLink, Senate, SenateMembership, Activity, Contact
+from .models import Board, Society, SocialLink, Senate, SenateMembership, Activity, Contact, Faculty
 
 
 class MembershipInline(admin.StackedInline):
@@ -11,22 +11,27 @@ class MembershipInline(admin.StackedInline):
 class SenateAdmin(admin.ModelAdmin):
     inlines = (MembershipInline,)
 
+class FacultyAdmin(admin.ModelAdmin):
+    #prepopulated_fields = {"slug": ("name",)}
+    list_display = ('name',)
 
-class SocietyAdmin(admin.ModelAdmin):
+
+class BoardAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name", "year")}
     list_display = ('name', 'is_active', 'year')
     list_filter = ('year', 'is_active')
+    exclude = ('secretary',)
 
 
-class ClubAdmin(admin.ModelAdmin):
+class SocietyAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-    search_fields = ['name', 'society__name']
-    list_display = ('__str__', 'society', 'ctype', 'published')
-    list_filter = ('published', 'ctype')
+    search_fields = ['name', 'board__name']
+    list_display = ('__str__', 'board', 'stype', 'published')
+    list_filter = ('published', 'stype')
 
 
 class ActivityAdmin(admin.ModelAdmin):
-    list_display = ('name', 'club')
+    list_display = ('name', 'society')
 
 
 # iterable list
@@ -35,8 +40,9 @@ main_models = [
     Contact
 ]
 
+admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(Society, SocietyAdmin)
-admin.site.register(Club, ClubAdmin)
+admin.site.register(Board, BoardAdmin)
 admin.site.register(Senate, SenateAdmin)
 admin.site.register(Activity, ActivityAdmin)
 admin.site.register(main_models)

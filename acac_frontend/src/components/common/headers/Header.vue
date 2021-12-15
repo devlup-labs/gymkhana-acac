@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-app-bar.px-md-12(app dark dense v-if="!$apollo.queries.societies.loading")
+  v-app-bar.px-md-12(app dark dense v-if="!$apollo.queries.boards.loading")
     img.mr-4(:src="logo" height="40")
     v-toolbar-items(hidden-sm-and-down)
       v-btn(text :to="{name: 'home'}" exact)
@@ -13,7 +13,7 @@
             span(v-if="$vuetify.breakpoint.mdAndUp") Boards
             v-icon(right) mdi-chevron-down
         v-list
-          v-list-item(v-for='({ node }, i) in societies.edges' :key='i' link :to="{name: 'society', params: {slug: node.slug}}")
+          v-list-item(v-for='({ node }, i) in boards.edges' :key='i' link :to="{name: 'board', params: {slug: node.slug}}")
             v-list-item-title {{ node.name }}
       v-btn(text :to="{name: 'konnekt-home'}")
         v-icon(:left="$vuetify.breakpoint.mdAndUp") mdi-web
@@ -31,12 +31,12 @@
 
 <script>
 import GymkhanaLogo from "../../../assets/logo.png";
-import { HEADER_SOCIETY_LIST_QUERY } from "../../../graphql/queries/headerSocietyListQuery";
+import { HEADER_BOARD_LIST_QUERY } from "../../../graphql/queries/headerBoardListQuery";
 
 export default {
   apollo: {
-    societies: {
-      query: HEADER_SOCIETY_LIST_QUERY
+    boards: {
+      query: HEADER_BOARD_LIST_QUERY
     }
   },
   name: "Header",

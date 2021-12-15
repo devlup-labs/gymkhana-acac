@@ -37,7 +37,13 @@
             }
         </style>
     {% endif %}
+    <style>
+        .cream-back {
+            background: #F5F5F5
+        }
+    </style>
 {% endblock %}
+
 {% block main %}
     <div class="streak streak-lg streak-photo society-photo view hm-black-light">
         <div class="mask flex-center">
@@ -87,20 +93,6 @@
             <div class="row">
                 <div class="col-md-12 flex-center">
                     <h4 class="h4-responsive mt-3 mb-2">No clubs or teams are associated with this society.</h4>
-                </div>
-            </div>
-        </div>
-    {% endif %}
-    {% if committee_list %}
-        <div class="cream-back pt-2 mt-3 pb-3">
-            {% include 'main/mixins/committee_list_mixin.html' with committee_list=committee_list committeetitle='Committes' %}
-        </div>
-    {% endif %}
-    {% if not committee_list %}
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 flex-center">
-                    <h4 class="h4-responsive mt-3 mb-2">No committes are associated with this Board.</h4>
                 </div>
             </div>
         </div>

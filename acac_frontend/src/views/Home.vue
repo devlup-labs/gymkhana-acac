@@ -32,15 +32,15 @@
               v-img(src="../assets/workstation-336369.jpg" )
             v-col(md="6" align-self="center")
               p.subtitle-1.text-center  Students' Gymkhana, IIT Jodhpur is the governing body that looks after all student activities.
-      v-row(v-if="!$apollo.queries.societies.loading").mt-4
+      v-row(v-if="!$apollo.queries.boards.loading").mt-4
         v-col
           v-row.justify-center
             v-col(sm="6" md="6")
               v-row.pa-2.justify-center.title.font-weight-regular
                 v-icon(left) mdi-newspaper
                 | News
-              NewsTable( v-if="societies.edges.find(({node})=>node.pastNews.edges.length)"
-                :newsList="societies.edges.flatMap(({node})=>node.pastNews.edges)"
+              NewsTable( v-if="boards.edges.find(({node})=>node.pastNews.edges.length)"
+                :newsList="boards.edges.flatMap(({node})=>node.pastNews.edges)"
               )
               v-col(v-else).text-center.title
                 | There is no News.
@@ -49,8 +49,8 @@
                 v-icon(left) mdi-note-text
                 | Upcoming Events
               EventTable(
-                v-if="societies.edges.find(({node})=>node.upcomingEvents.edges.length)"
-                :eventsList="societies.edges.flatMap(({node}) => node.upcomingEvents.edges)"
+                v-if="boards.edges.find(({node})=>node.upcomingEvents.edges.length)"
+                :eventsList="boards.edges.flatMap(({node}) => node.upcomingEvents.edges)"
               )
               v-col(v-else).text-center.title
                 | There are no Upcoming Events.
@@ -64,12 +64,12 @@
           v-row.display-1.justify-center.mb-12 Festivals
           v-row
             FestivalCarousel(:festivalsList="festivals.edges")
-    v-container(v-if="!$apollo.queries.societies.loading")
+    v-container(v-if="!$apollo.queries.boards.loading")
       v-col(cols="12")
-        p.display-1.text-center Societies
-      v-col(cols="12" v-if="societies")
+        p.display-1.text-center Boards
+      v-col(cols="12" v-if="boards")
         v-row.justify-center
-          v-col(cols="12" sm="6" v-for="({ node }, i) in societies.edges" :key="i")
+          v-col(cols="12" sm="6" v-for="({ node }, i) in boards.edges" :key="i")
             StripedCard(:node="node")
     v-img(src="../assets/other/background.svg" v-if="!$apollo.queries.homeGallery.loading && homeGallery" :min-height="carouselHeight")
       div.mask.fill-height
@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { GET_SOCIETIES_QUERY } from "../graphql/queries/homeSocietyQuery";
+import { GET_BOARDS_QUERY } from "../graphql/queries/homeBoardQuery";
 import { GET_FESTIVAL_QUERY } from "../graphql/queries/festivalQuery";
 import FestivalCarousel from "../components/FestivalCarousel";
 import StripedCard from "../components/common/cards/StripedCard";
@@ -99,8 +99,8 @@ export default {
     FestivalCarousel
   },
   apollo: {
-    societies: {
-      query: GET_SOCIETIES_QUERY
+    boards: {
+      query: GET_BOARDS_QUERY
     },
     festivals: {
       query: GET_FESTIVAL_QUERY
