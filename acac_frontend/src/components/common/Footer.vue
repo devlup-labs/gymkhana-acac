@@ -5,13 +5,13 @@
         v-row(style="{background: #000000}").justify-center
           v-col(cols="12" md="6").text-center
             v-layout(row)
-              v-container
+              v-container.pa-8
                 p ABOUT US
                 p Student Gymkhana IITJ
                    
           v-col(cols="12" md="6").text-center
             v-layout(row)
-              v-container(class="white--text")
+              v-container(class="white--text").pa-8
                 p QUICK LINKS
                 p
                   a(href="http://iitj.ac.in" class="white--text" target="_blank" style="text-decoration: none;") IIT Jodhpur
@@ -27,12 +27,12 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
 };
 </script>
 
 <style scoped>
 section {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 </style>

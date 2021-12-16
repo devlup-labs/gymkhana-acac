@@ -15,6 +15,7 @@ import Forum from "../views/Forum";
 import UserProfile from "../views/UserProfile";
 import QuestionsAnsweredByUser from "../components/forum/QuestionsAnsweredByUser";
 import Register from "@/views/Register";
+import Festivlas from "../views/Festivals";
 
 Vue.use(VueRouter);
 
@@ -140,6 +141,11 @@ const routes = [
     name: "society",
     path: "/society/:slug",
     component: Society
+  },
+  {
+    name: "festivals",
+    path: "/festivals/",
+    component: Festivlas
   }
 ];
 
