@@ -74,14 +74,12 @@
     v-container.pa-8
       v-card(class="accent white--text").elevation-10
         v-card-title.justify-center.display-1 Key People
-      v-col(cols="12" v-if="!$apollo.queries.senate.loading")
-        v-container
-          v-row.justify-space-around
-            v-row(cols="12" md="4" v-for="({ node }, i) in senate.edges" :key="i")
-              v-col(v-if="node.genSecySenate")
-                OfficeBearerCard(:avatarSize="120" :profile="node.genSecySenate" :designation="'General Secretary Senate'")
-              v-col(v-if="node.genSecyAcac")
-                OfficeBearerCard(:avatarSize="120" :profile="node.genSecyAcac" :designation="'General Secretary ACAC'")
+    v-container(v-if="!$apollo.queries.senate.loading")
+      v-row(v-for="({ node }, i) in senate.edges" :key="i").justify-space-around
+        v-col(cols="12" md="4" v-if="node.genSecySenate")
+          OfficeBearerCard(:avatarSize="120" :profile="node.genSecySenate" :designation="'General Secretary Senate'")
+        v-col(cols="12" md="4" v-if="node.genSecyAcac")
+          OfficeBearerCard(:avatarSize="120" :profile="node.genSecyAcac" :designation="'General Secretary ACAC'")
     v-img(src="../assets/other/background.svg" v-if="!$apollo.queries.homeGallery.loading && homeGallery" :min-height="carouselHeight")
       div.mask.fill-height
         v-container
