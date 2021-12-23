@@ -34,4 +34,5 @@ class SocietyFactory(factory.django.DjangoModelFactory):
 
         if extracted:
             for user in extracted:
+                self.student_coordinators.add(user)
                 self.core_members.add(user)
