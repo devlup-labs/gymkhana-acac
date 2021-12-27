@@ -28,7 +28,7 @@ class Command(BaseCommand):
         self.create_objects(EventFactory)
         self.create_objects(FestivalEventFactory)
         self.create_objects(SocietyFactory, m2m=True)
-        self.create_objects(MemberWithSenateFactory)
+        self.create_objects(MemberWithSenateFactory, 1)
         self.create_objects(ContactFactory)
         self.create_objects(AnswerFactory, 20, m2m=True)
         self.create_objects(TopicFactory, 5, m2m=True)
@@ -44,7 +44,8 @@ class Command(BaseCommand):
         elif klass is not None and m2m is True:
             for i in range(object_count):
                 multiple_users = (UserProfile.objects.get(roll='B16CS%d' % random.randint(0, 10)),
-                                  UserProfile.objects.get(roll='B16CS%d' % random.randint(10, 20)),
+                                  UserProfile.objects.get(
+                                      roll='B16CS%d' % random.randint(10, 20)),
                                   )
                 try:
                     klass.create(users=multiple_users)
