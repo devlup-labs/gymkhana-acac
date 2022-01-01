@@ -1,26 +1,54 @@
 version: '3'
-
 services:
-    backend:
-        build:
-              context: Backend
-              dockerfile: Dockerfile 
-        command: python manage.py migrate
-        command: python manage.py runserver
-        ports:
-             - 8000:8000
-
-    frontend:
-          build:
-                context: frontend
-                dockerfile: Dockerfile  
-          command: npm run serve
-          ports:
-               - 8080:8080
-        
-          
-        
-              
-        
-
-         
+  django:
+    build:
+      context: acac_backend
+      dockerfile: Dockerfile
+    image: 'gymkhana-acac-backend:latest'
+    container_name: django
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - DB_HOST=postgresql
+      - MODE=Development-docker
+    ports:
+      - 8000:8000
+    volumes:
+      - ./acac_backend:/app
+    depends_on:
+      - postgresql
+    networks:
+      - app-network
+    command:
+      - /bin/sh
+      - -c
+      - |
+        cd src
+        python manage.py flush --no-input
+        python manage.py makemigrations
+        python manage.py migrate
+        python manage.py createsuperuser
+        python manage.py runserver 0.0.0.0:8000
+  postgresql:
+    image: 'bitnami/postgresql:latest'
+    container_name: postgresql
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - POSTGRESQL_USERNAME=$DB_USER
+      - POSTGRESQL_PASSWORD=$DB_PASSWORD
+      - POSTGRESQL_DATABASE=$DB_NAME
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $DB_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - dbdata:/bitnami/postgresql
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
+volumes:
+  dbdata:

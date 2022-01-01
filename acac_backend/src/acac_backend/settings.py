@@ -27,7 +27,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 HTML_MINIFY = not DEBUG
 MAINTENANCE_MODE = False
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [s.strip() for s in v.split(',')])
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=lambda v: [
+                       s.strip() for s in v.split(',')])
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # Application definition
 
@@ -89,15 +90,18 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, config('STATIC_PATH', default='../staticfiles', cast=str))
+STATIC_ROOT = os.path.join(BASE_DIR, config(
+    'STATIC_PATH', default='../staticfiles', cast=str))
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, config('MEDIA_PATH', default='../media', cast=str))
+MEDIA_ROOT = os.path.join(BASE_DIR, config(
+    'MEDIA_PATH', default='../media', cast=str))
 
 MEDIA_URL = '/media/'
 
-VUE_ROOT = os.path.join(BASE_DIR, config('VUE_PATH', default='../vue', cast=str))
+VUE_ROOT = os.path.join(BASE_DIR, config(
+    'VUE_PATH', default='../vue', cast=str))
 
 VUE_DIRS = [
     os.path.join(VUE_ROOT, 'dist')
@@ -122,8 +126,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'libraries' : {
-                'staticfiles': 'django.templatetags.static', 
+            'libraries': {
+                'staticfiles': 'django.templatetags.static',
             }
         },
     },
@@ -197,9 +201,11 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {'hd': 'iitj.ac.in'}
 
 SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['username', 'email']
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('GOOGLE_OAUTH2_KEY', default='', cast=str)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config(
+    'GOOGLE_OAUTH2_KEY', default='', cast=str)
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('GOOGLE_OAUTH2_SECRET', default='', cast=str)
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config(
+    'GOOGLE_OAUTH2_SECRET', default='', cast=str)
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
@@ -215,7 +221,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_by_email',
 )
 
-SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'last_name', 'email']
+SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = [
+    'username', 'first_name', 'last_name', 'email']
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
@@ -248,7 +255,8 @@ CKEDITOR_CONFIGS = {
         'tabSpaces': 4,
         'mathJaxLib': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML',
         'toolbar_Basic': [
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
+            {'name': 'clipboard', 'items': [
+                'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
             # {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
             {'name': 'basicstyles',
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
@@ -259,7 +267,8 @@ CKEDITOR_CONFIGS = {
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', '-',
                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', ]},
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
+            {'name': 'styles', 'items': [
+                'Styles', 'Format', 'Font', 'FontSize']},
         ],
         'extraPlugins': ','.join([
             'uploadimage',
@@ -337,8 +346,10 @@ VERSATILEIMAGEFIELD_RENDITION_KEY_SETS = {
     ]
 }
 
-HOME_PAGE_CAROUSEL_GALLERY_SLUG = config('HOME_PAGE_CAROUSEL_GALLERY_SLUG', cast=str, default='home-carousel')
-HOME_PAGE_GALLERY_SLUG = config('HOME_PAGE_GALLERY_SLUG', cast=str, default='home-gallery')
+HOME_PAGE_CAROUSEL_GALLERY_SLUG = config(
+    'HOME_PAGE_CAROUSEL_GALLERY_SLUG', cast=str, default='home-carousel')
+HOME_PAGE_GALLERY_SLUG = config(
+    'HOME_PAGE_GALLERY_SLUG', cast=str, default='home-gallery')
 
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 
@@ -373,7 +384,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG else \
     'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='noreply@localhost.com', cast=str)
+EMAIL_HOST_USER = config(
+    'EMAIL_HOST_USER', default='noreply@localhost.com', cast=str)
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='', cast=str)
 
 GRAPHQL_JWT = {

@@ -77,7 +77,7 @@
     v-container(v-if="!$apollo.queries.senate.loading")
       v-row(v-for="({ node }, i) in senate.edges" :key="i").justify-space-around
         v-col(cols="12" md="4" v-if="node.genSecySenate")
-          OfficeBearerCard(:avatarSize="120" :profile="node.genSecySenate" :designation="'General Secretary Senate'")
+          OfficeBearerCard(:avatarSize="120" :profile="node.genSecySenate" :designation="'General Secretary Student Senate'")
         v-col(cols="12" md="4" v-if="node.genSecyAcac")
           OfficeBearerCard(:avatarSize="120" :profile="node.genSecyAcac" :designation="'General Secretary ACAC'")
     v-img(src="../assets/other/background.svg" v-if="!$apollo.queries.homeGallery.loading && homeGallery" :min-height="carouselHeight")

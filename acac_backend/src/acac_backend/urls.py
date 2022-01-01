@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
-    url(r'^admin/frontend-upload/',
+    url(r'^frontend-upload/',
         user_passes_test(lambda u: u.is_superuser, login_url='admin:login')(
             FrontendUpdateView.as_view()),
         name='admin-frontend-upload'),
