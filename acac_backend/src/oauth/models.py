@@ -85,7 +85,7 @@ class UserProfile(models.Model):
     )
     BRANCH_CHOICES = (
         ('CSE', 'Computer Science and Engineering'),
-        ('AI',' Artificial Intellingence and Data Science'),
+        ('AI', ' Artificial Intellingence and Data Science'),
         ('EE', 'Electrical Engineering'),
         ('ME', 'Mechanical Engineering'),
         ('CI', ' Civil and Infrastructure Engineering'),
@@ -95,15 +95,17 @@ class UserProfile(models.Model):
         ('MME', 'Metallurgical and Materials Engineering'),
         ('HSS', 'Humanities and Social Sciences'),
         ('BB', 'Bioscience and Bioengineering'),
-        ('SME',' Management and Entrepreneurship')
+        ('SME', ' Management and Entrepreneurship')
     )
     # Database Model
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email_confirmed = models.BooleanField(default=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default='M')
+    gender = models.CharField(
+        max_length=1, choices=GENDER_CHOICES, default='M')
     roll = models.CharField(max_length=15, unique=True)
     dob = models.DateField()
-    prog = models.CharField(max_length=5, choices=PROG_CHOICES, verbose_name='programme', default='BT')
+    prog = models.CharField(
+        max_length=5, choices=PROG_CHOICES, verbose_name='programme', default='BT')
     year = models.CharField(max_length=1, choices=YEAR_CHOICES, default='1')
     phone = models.CharField(max_length=10, validators=[contact])
     avatar = VersatileImageField(upload_to='avatar', blank=True, null=True)
@@ -112,7 +114,8 @@ class UserProfile(models.Model):
     branch = models.CharField(max_length=5, choices=BRANCH_CHOICES)
     skills = models.TextField(help_text="Enter your skills, separated by comma.", max_length=1024, blank=True,
                               null=True, default=None)
-    about = models.TextField(max_length=160, verbose_name='about you', blank=True, null=True)
+    about = models.TextField(
+        max_length=160, verbose_name='about you', blank=True, null=True)
 
     class Meta:
         ordering = ["roll"]

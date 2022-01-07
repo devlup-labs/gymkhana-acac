@@ -29,11 +29,6 @@ v-app-bar.px-md-12(app, dark, dense, v-if="!$apollo.queries.boards.loading")
       v-icon(:left="$vuetify.breakpoint.mdAndUp") mdi-party-popper
       span(v-if="$vuetify.breakpoint.mdAndUp") Fests
   v-spacer
-  v-toolbar-items
-    v-btn
-      v-icon(:left="$vuetify.breakpoint.mdAndUp", v-if="$vuetify.theme.dark") mdi-moon-waxing-crescent
-      v-icon(:left="$vuetify.breakpoint.mdAndUp", v-else) mdi-brightness-7
-      v-switch.mt-5(v-model="$vuetify.theme.dark")
 </template>
 
 <script>
