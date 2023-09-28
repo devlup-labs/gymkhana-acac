@@ -46,6 +46,30 @@ services:
       - dbdata:/bitnami/postgresql
     networks:
       - app-network
+  vue:
+    build:
+      context: acac_frontend
+      dockerfile: Dockerfile
+    image: 'gymkhana-acac-frontend:latest'
+    container_name: vue
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - MODE=Development-docker
+    ports:
+      - 8080:8080
+    volumes:
+      - ./acac_frontend:/app
+      - /app/node_modules
+    # networks:
+    #   - app-network
+    # command:
+    #   - /bin/sh
+    #   - -c
+    #   - |
+    #     cd src
+    #     npm install
+    #     npm run serve
 networks:
   app-network:
     driver: bridge
