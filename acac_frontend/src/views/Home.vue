@@ -28,8 +28,6 @@
         v-col
           h1.mb-2.display-1.text-center About Students' Gymkhana
           v-row.justify-center
-            v-col(sm="6" md="4")
-              v-img(src="../assets/workstation-336369.jpg" )
             v-col(md="6" align-self="center")
               p.subtitle-1.text-center  Students' Gymkhana, IIT Jodhpur is the governing body that looks after all student activities.
       v-row(v-if="!$apollo.queries.boards.loading").mt-4
