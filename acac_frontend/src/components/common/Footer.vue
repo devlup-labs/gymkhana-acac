@@ -7,7 +7,7 @@
             v-layout(row)
               v-container.pa-8
                 p ABOUT US
-                p Student Gymkhana IITJ
+                p Students' Gymkhana, IIT Jodhpur is the governing body that looks after all student activities.
                    
           v-col(cols="12" md="6").text-center
             v-layout(row)
@@ -15,7 +15,9 @@
                 p QUICK LINKS
                 p
                   a(href="http://iitj.ac.in" class="white--text" target="_blank" style="text-decoration: none;") IIT Jodhpur
-                p Contact Us
+                p 
+                   a(href="https://iitj.ac.in/footer/index.php?id=contact" class="white--text" target="_blank" style="text-decoration: none;") Contact Us
+
                 p
                   a(href="http://iitj.ac.in/academics/index.php?id=academic_calendar" class="white--text" style="text-decoration: none;") Academic Calender
     v-footer(color="blue darken-2 white--text").text-center.justify-center.align-center

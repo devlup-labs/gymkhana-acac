@@ -19,12 +19,7 @@ v-app-bar.px-md-12(app, dark, dense, v-if="!$apollo.queries.boards.loading")
           :to="{ name: 'board', params: { slug: node.slug } }"
         )
           v-list-item-title {{ node.name }}
-    v-btn(text, :to="{ name: 'konnekt-home' }")
-      v-icon(:left="$vuetify.breakpoint.mdAndUp") mdi-web
-      span(v-if="$vuetify.breakpoint.mdAndUp") Konnekt
-    v-btn(text, :to="{ name: 'forum-home' }")
-      v-icon(:left="$vuetify.breakpoint.mdAndUp") mdi-forum
-      span(v-if="$vuetify.breakpoint.mdAndUp") Forum
+    
     v-btn(text, :to="{ name: 'festivals' }")
       v-icon(:left="$vuetify.breakpoint.mdAndUp") mdi-party-popper
       span(v-if="$vuetify.breakpoint.mdAndUp") Fests
@@ -44,8 +39,7 @@ export default {
   name: "Header",
   data: () => ({
     toolbarItems: [
-      { title: "Forum", icon: "mdi-forum", to: { name: "forum-home" } },
-      { title: "Konnekt", icon: "mdi-web", to: { name: "konnekt-home" } },
+      
       {
         title: "Account",
         icon: "mdi-account",
